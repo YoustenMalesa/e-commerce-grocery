@@ -49,7 +49,7 @@ public class OrderService {
         return SessionCreateParams.LineItem.PriceData
                 .builder()
                 .setCurrency("ZAR")
-                .setUnitAmount((long)(checkoutItemDto.getPrice().longValue()*100))
+                .setUnitAmount((long)(checkoutItemDto.getPrice().longValue()))
                 .setProductData(
                         SessionCreateParams.LineItem.PriceData.ProductData.builder()
                                 .setName(checkoutItemDto.getProductName())
