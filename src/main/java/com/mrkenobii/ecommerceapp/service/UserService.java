@@ -6,6 +6,7 @@ import com.mrkenobii.ecommerceapp.dto.user.SignupResponseDto;
 import com.mrkenobii.ecommerceapp.dto.user.SignupDto;
 import com.mrkenobii.ecommerceapp.exception.AuthenticationFailedException;
 import com.mrkenobii.ecommerceapp.exception.CustomException;
+import com.mrkenobii.ecommerceapp.model.Address;
 import com.mrkenobii.ecommerceapp.model.AuthenticationToken;
 import com.mrkenobii.ecommerceapp.model.User;
 import com.mrkenobii.ecommerceapp.repository.UserRepository;
@@ -39,6 +40,12 @@ public class UserService {
         user.setFirstName(signupDto.getFirstName());
         user.setLastName(signupDto.getLastName());
         user.setPassword(encryptedPassword);
+
+        Address shippingAddress = signupDto.getShippingAddress();
+        Address billingAddress = signupDto.getBillingAddress();
+
+        user.setBillingAddress(billingAddress);
+        user.setShippingAddress(shippingAddress);
         userRepository.save(user);
 
         final AuthenticationToken authenticationToken = new AuthenticationToken(user);
