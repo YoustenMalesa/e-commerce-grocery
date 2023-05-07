@@ -23,7 +23,4 @@ public class Address {
     private String province;
     @Column(name = "zip_code")
     private String zipCode;
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private User user;
 }

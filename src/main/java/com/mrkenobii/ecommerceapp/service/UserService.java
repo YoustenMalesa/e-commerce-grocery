@@ -79,4 +79,33 @@ public class UserService {
             throw new CustomException("Token is present");
         return new SignInResponseDto("success", authenticationToken.getToken());
     }
+
+    public User findByEmail(String email) {
+        System.out.println("Email:: " + email);
+        User user = userRepository.findByEmail(email);
+        if(Objects.isNull(user))
+            throw new AuthenticationFailedException("User not found");
+
+        return user;
+    }
+
+    public User findById(String id) {
+        System.out.println("Email:: " + id);
+        User user = userRepository.findById(Integer.valueOf(id)).get();
+        if(Objects.isNull(user))
+            throw new AuthenticationFailedException("User not found");
+
+        return user;
+    }
+
+    public User updateUserAddresses(String id, SignupDto updatedDetails) {
+        User user = findById(id);
+
+        user.setShippingAddress(updatedDetails.getShippingAddress());
+        user.setBillingAddress(updatedDetails.getBillingAddress());
+
+        userRepository.save(user);
+
+        return user;
+    }
 }
