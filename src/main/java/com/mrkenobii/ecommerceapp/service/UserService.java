@@ -99,7 +99,7 @@ public class UserService {
     }
 
     public User updateUserAddresses(String id, SignupDto updatedDetails) {
-        User user = findById(id);
+        User user = findByEmail(id);
 
         user.setShippingAddress(updatedDetails.getShippingAddress());
         user.setBillingAddress(updatedDetails.getBillingAddress());

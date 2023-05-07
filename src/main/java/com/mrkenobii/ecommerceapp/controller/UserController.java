@@ -33,8 +33,8 @@ public class UserController {
         return new ResponseEntity<>(userService.findByEmail(email), HttpStatus.OK);
     }
 
-    @PostMapping("/update/{id}")
-    public ResponseEntity<User> updateUserDetails(@PathVariable String id, @RequestBody SignupDto details) {
-        return new ResponseEntity<>(userService.updateUserAddresses(id, details), HttpStatus.OK);
+    @PostMapping("/update")
+    public ResponseEntity<User> updateUserDetails(@RequestParam("email") String email, @RequestBody SignupDto details) {
+        return new ResponseEntity<>(userService.updateUserAddresses(email, details), HttpStatus.OK);
     }
 }
