@@ -28,4 +28,9 @@ public class ProductController {
     public ResponseEntity<ProductDto> updateProduct(@PathVariable String productId, @RequestBody ProductDto productDto){
         return new ResponseEntity<>(productService.updateProduct(productDto, productId), HttpStatus.OK);
     }
+
+    @GetMapping("/find/{productId}")
+    public ResponseEntity<Product> findById(@PathVariable String productId) {
+        return new ResponseEntity<>(productService.findById(Integer.valueOf(productId)), HttpStatus.OK);
+    }
 }
