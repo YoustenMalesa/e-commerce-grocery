@@ -1,5 +1,7 @@
 package com.mrkenobii.ecommerceapp.dto.checkout;
 
+import com.mrkenobii.ecommerceapp.dto.order.OrderDto;
+import com.mrkenobii.ecommerceapp.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,5 +10,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StripeResponse {
-    private String sessionId;
+    private OrderDto order;
 }

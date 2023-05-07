@@ -10,5 +10,4 @@ public class CheckoutItemDto {
     private Integer quantity;
     private Double price;
     private Long productId;
-    private Integer userId;
 }
