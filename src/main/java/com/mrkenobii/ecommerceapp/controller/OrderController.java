@@ -3,6 +3,7 @@ package com.mrkenobii.ecommerceapp.controller;
 import com.mrkenobii.ecommerceapp.dto.checkout.CheckoutItemDto;
 import com.mrkenobii.ecommerceapp.dto.checkout.StripeResponse;
 import com.mrkenobii.ecommerceapp.dto.order.OrderDto;
+import com.mrkenobii.ecommerceapp.dto.order.OrderHistoryResponse;
 import com.mrkenobii.ecommerceapp.model.Order;
 import com.mrkenobii.ecommerceapp.model.OrderDetails;
 import com.mrkenobii.ecommerceapp.service.OrderService;
@@ -38,7 +39,7 @@ public class OrderController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<?> findOrdersByEmail(@RequestParam("email") String email) {
-        return new ResponseEntity<>(orderService.findOrdersByEmail(email), HttpStatus.OK);
+    public ResponseEntity<OrderHistoryResponse> findOrdersByEmail(@RequestParam("email") String email) {
+        return new ResponseEntity<>(new OrderHistoryResponse(orderService.findOrdersByEmail(email)), HttpStatus.OK);
     }
 }
